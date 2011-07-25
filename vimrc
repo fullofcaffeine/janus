@@ -1,5 +1,11 @@
 let mapleader=","
 
+
+" http://credentiality2.blogspot.com/2010/05/avoiding-annoying-no-write-since-last.html
+set hidden
+
+
+
 set nocompatible
 
 set number
@@ -48,6 +54,27 @@ map <Leader><Leader> :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
+
+
+" CommandT ********************************************************
+  " To compile:
+  " cd ~/cl/etc/vim/ruby/command-t
+  " ruby extconf.rb
+  " make
+let g:CommandTMatchWindowAtTop = 1
+map <Leader>f :CommandT<CR>
+map <Leader>F :CommandTFlush<CR>
+
+" NERD Commenter **************************************************************
+let NERDCreateDefaultMappings=0 " I turn this off to make it simple
+
+" Toggle commenting on 1 line or all selected lines. Wether to comment or not
+" is decided based on the first line; if it's not commented then all lines
+" will be commented
+:map <Leader>c :call NERDComment(0, "toggle")<CR> 
+
+
+
 
 "This is to see the list of methods. Much better than searching using /
 ""I used to map it to t, but ,m is faster and more ergonomic
@@ -101,11 +128,10 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
+  
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
 " Unimpaired configuration
 " Bubble single lines
 nmap <C-Up> [e
@@ -132,7 +158,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+color molokay
 
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -148,7 +174,6 @@ let macvim_hig_shift_movement = 1
 runtime! macros/matchit.vim
 
 " Show (partial) command in the status line
-set showcmd
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
