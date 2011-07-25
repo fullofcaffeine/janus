@@ -1,3 +1,5 @@
+let mapleader=","
+
 set nocompatible
 
 set number
@@ -46,6 +48,11 @@ map <Leader><Leader> :ZoomWin<CR>
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
+
+"This is to see the list of methods. Much better than searching using /
+""I used to map it to t, but ,m is faster and more ergonomic
+map <Leader>t :FufBufferTag<CR>
+
 
 " Remember last location in file
 if has("autocmd")
